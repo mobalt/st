@@ -1,7 +1,7 @@
-diff --git a/config.def.h b/config.def.h
+diff --git a/config.h b/config.h
 index 82b1b09..fe1680b 100644
---- a/config.def.h
-+++ b/config.def.h
+--- a/config.h
++++ b/config.h
 @@ -82,44 +82,29 @@ char *termname = "st-256color";
   */
  unsigned int tabspaces = 8;
