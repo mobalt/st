@@ -1,0 +1,128 @@
+!#define S_base03        #002b36
+!#define S_base02        #073642
+!#define S_base01        #586e75
+!#define S_base00        #657b83
+!#define S_base0         #839496
+!#define S_base1         #93a1a1
+!#define S_base2         #eee8d5
+!#define S_base3         #fdf6e3
+!
+!#define S_yellow        #b58900
+!#define S_orange        #cb4b16
+!#define S_red           #dc322f
+!#define S_magenta       #d33682
+!#define S_violet        #6c71c4
+!#define S_blue          #268bd2
+!#define S_cyan          #2aa198
+!#define S_green         #859900
+!
+!
+!!! dark
+!#define S_base03        #002b36
+!#define S_base02        #073642
+!#define S_base01        #586e75
+!#define S_base00        #657b83
+!#define S_base0         #839496
+!#define S_base1         #93a1a1
+!#define S_base2         #eee8d5
+!#define S_base3         #fdf6e3
+!
+!#define S_yellow        #b58900
+!#define S_orange        #cb4b16
+!#define S_red           #dc322f
+!#define S_magenta       #d33682
+!#define S_violet        #6c71c4
+!#define S_blue          #268bd2
+!#define S_cyan          #2aa198
+!#define S_green         #859900
+
+! Modified solarized light
+#define S_base02        #eee8d5
+#define S_red           #dc322f
+#define S_green         #859900
+#define S_yellow        #b58900
+#define S_blue          #268bd2
+#define S_magenta       #d33682
+#define S_cyan          #2aa198
+#define S_base2         #073642
+#define S_base03        #fdf6e3
+#define S_orange        #cb4b16
+#define S_base01        #93a1a1
+#define S_base00        #839496
+#define S_base0         #657b83
+#define S_violet        #6c71c4
+#define S_base1         #586e75
+#define S_base3         #002b36
+
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
+font:			Hack:pixelsize=16:antialias=true:autohint=true
+st.bold_font:			0
+
+
+*background:            S_base02
+*foreground:            S_base2
+*fadeColor:             S_base3
+*cursorColor:           S_magenta
+*cursorColor2:          S_magenta
+*pointerColorBackground:S_base1
+*pointerColorForeground:S_base01
+
+st.background:			#131415
+!st.foreground:			#A3BAD0
+!st.cursorColor:			#8d9b53
+st.termname:			xterm-256color
+st.shell:			/usr/bin/fish
+st.bellvolume:			100
+st.tabspaces:			8
+st.chscale:			1.0
+st.cwscale:			1.0
+
+!!st.color0:			#353540
+!!st.color8:			#545466
+!!st.color1:			#8c5760
+!!st.color9:			#b26f7a
+!!st.color2:			#7b8c58
+!!st.color10:			#9db270
+!!st.color3:			#8c6e43
+!!st.color11:			#b28c55
+!!st.color4:			#58698c
+!!st.color12:			#7086b2
+!!st.color5:			#7b5e7d
+!!st.color13:			#9c77b2
+!!st.color6:			#66808c
+!!st.color14:			#82a2b2
+!!st.color7:			#8c8b8b
+!!st.color15:			#b8b8c8
+
