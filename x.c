@@ -1888,6 +1888,7 @@ void setpalette(const Arg *arg) {
     if ( arg->i < LEN(palettes) )   {
         colorname = palettes[arg->i];
         xloadcols();
+	redraw();
         cresize(win.w, win.h);
     }
 }

@@ -5,7 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+//static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Hack:pixelsize=16:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -16,7 +17,7 @@ static int borderpx = 2;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/sh";
+static char *shell = "/usr/bin/fish";
 char *utmp = NULL;
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
@@ -84,6 +85,14 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 used in escape sequence) */
 static const char *palettes[][16] = {
+    { /* solarized dark */
+      "#073642", "#dc322f", "#859900", "#b58900", "#268bd2", "#d33682", "#2aa198", "#eee8d5",
+      "#002b36", "#cb4b16", "#586e75", "#657b83", "#839496", "#6c71c4", "#93a1a1", "#fdf6e3",
+    },
+    { /* solarized light */
+      "#eee8d5", "#dc322f", "#859900", "#b58900", "#268bd2", "#d33682", "#2aa198", "#073642",
+      "#fdf6e3", "#cb4b16", "#93a1a1", "#839496", "#657b83", "#6c71c4", "#586e75", "#002b36",
+    },
     {"black", "red3", "green3", "yellow3", "blue2", "magenta3", "cyan3", "gray90",
     "gray50", "red", "green", "yellow", "#5c5cff", "magenta", "cyan", "white"},
     {"#223", "#900", "#080", "#fe7", "#35e", "#fc5", "#18e", "#aaa",
@@ -101,7 +110,7 @@ static const char **colorname;
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 5;
+unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 5;
 static unsigned int defaultrcs = 5;
@@ -145,6 +154,14 @@ static MouseShortcut mshortcuts[] = {
 	{ Button5,              XK_ANY_MOD,     "\005" },
 };
 
+static char *openurlcmd[] = { "/bin/sh", "-c",
+	"linkgrabber.sh",
+	"externalpipe", NULL };
+
+static char *editscreencmd[] = { "/bin/sh", "-c",
+	"editscreen.sh",
+	"externalpipe", NULL };
+
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
@@ -162,6 +179,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+    { MODKEY,               XK_U,           externalpipe,   {.v = openurlcmd} },
+    { MODKEY|ShiftMask,     XK_E,           externalpipe,   {.v = editscreencmd } },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ TERMMOD,              XK_Escape,      keyboard_select,{.i =  0} },
 	{ MODKEY|ShiftMask,     XK_F1,          setpalette,     {.i =  0} },
@@ -264,7 +283,7 @@ static Key key[] = {
 	{ XK_KP_Delete,     ShiftMask,      "\033[2K",      -1,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0},
 	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[P",       -1,    0},
-	{ XK_KP_Delete,     XK_ANY_MOD,     "\177",         +1,    0},
+	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0},
 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0},
 	{ XK_KP_Enter,      XK_ANY_MOD,     "\033OM",       +2,    0},
@@ -332,7 +351,8 @@ static Key key[] = {
 	{ XK_Delete,        ShiftMask,      "\033[2K",      -1,    0},
 	{ XK_Delete,        ShiftMask,      "\033[3;2~",    +1,    0},
 	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0},
-	{ XK_Delete,        XK_ANY_MOD,     "\177",         +1,    0},
+	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",      +1,    0},
+	{ XK_BackSpace,     XK_NO_MOD,      "\177",          0,    0},
 	{ XK_BackSpace,     Mod1Mask,       "\033\177",      0,    0},
 	{ XK_Home,          ShiftMask,      "\033[2J",       0,   -1},
 	{ XK_Home,          ShiftMask,      "\033[1;2H",     0,   +1},
