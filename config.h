@@ -160,6 +160,14 @@ static MouseShortcut mshortcuts[] = {
 	{ Button5,              XK_ANY_MOD,     "\005" },
 };
 
+static char *openurlcmd[] = { "/bin/sh", "-c",
+	"linkgrabber.sh",
+	"externalpipe", NULL };
+
+static char *editscreencmd[] = { "/bin/sh", "-c",
+	"editscreen.sh",
+	"externalpipe", NULL };
+
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
@@ -177,6 +185,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+    { MODKEY,               XK_U,           externalpipe,   {.v = openurlcmd} },
+    { MODKEY|ShiftMask,     XK_E,           externalpipe,   {.v = editscreencmd } },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
